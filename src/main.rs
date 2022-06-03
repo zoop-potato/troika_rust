@@ -129,7 +129,10 @@ impl Enemy {
     }
 
     fn damage_by_attack(&mut self, attack_roll: i16, weapon: &Weapon) {
-        let ajusted_roll = attack_roll - self.armour;
+        let mut ajusted_roll = attack_roll - self.armour;
+        if (ajusted_roll < attack_roll) && weapon.armour_piercing {
+            ajusted_roll += 1;
+        }
         self.stats.damage(weapon.damage(ajusted_roll));
     }
 
