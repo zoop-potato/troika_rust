@@ -276,3 +276,31 @@ impl Mien {
         }
     }
 }
+
+/*
+#################
+# Trait Changes #
+#################
+*/
+
+struct DamageRoll {
+    weapon: Weapon,
+    damage_index: i16,
+    roll_state: RollResult,
+}
+
+enum RollResult {
+    Mighty,
+    Normal,
+    Fumble,
+}
+
+trait Combat {
+    fn attack(&mut self, target: &mut impl Combat);
+
+    fn take_damage_from_attack(&mut self, weapon: Weapon);
+
+    fn attack_roll(&self) -> (i16, RollResult);
+
+    fn damage_roll(&self, self_roll: DamageRoll, target_roll: DamageRoll) -> i16;
+}
