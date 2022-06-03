@@ -44,9 +44,9 @@ impl StatBlock {
         println!("{:?}", self);
     }
 
-    fn damage(&mut self, attack: i16) {
+    fn damage(&mut self, loss: i16) {
         // Reduce stamina
-        self.stamina -= attack;
+        self.stamina -= loss;
         // Check if stamina is zero or below
         if self.stamina <= 0 {
             self.stamina = 0;
@@ -54,12 +54,12 @@ impl StatBlock {
         }
     }
 
-    fn heal(&mut self, restore: i16) {
+    fn heal(&mut self, gain: i16) {
         // check for negitive and non healing
-        if restore <= 0 {
+        if gain <= 0 {
             // Do nothing
         } else {
-            self.stamina += restore;
+            self.stamina += gain;
             // Check for over healing
             if self.stamina > self.stamina_cap {
                 self.stamina = self.stamina_cap;
@@ -128,15 +128,19 @@ impl Enemy {
         }
     }
 
-    fn damage(&mut self, attack_roll: i16, weapon: &Weapon) {
+    fn damage_by_attack(&mut self, attack_roll: i16, weapon: &Weapon) {
         let ajusted_roll = attack_roll - self.armour;
         self.stats.damage(weapon.damage(ajusted_roll));
+    }
+
+    fn damage(&mut self, loss: i16) {
+        self.stats.damage(loss);
     }
 
     fn attack(&self, target: &mut Enemy) {
         let roll:i16 = Dice::new(1, 6).unwrap().total() as i16;
         println!("I rolled a {}!", roll);
-        target.damage(roll, &self.weapon);
+        target.damage_by_attack(roll, &self.weapon);
     }
 
     fn alive(&self) -> bool {
