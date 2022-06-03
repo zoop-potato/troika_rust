@@ -228,6 +228,16 @@ impl Weapon {
             armour_piercing: false,
         }
     }
+
+    fn hammer() -> Weapon {
+        Weapon {
+            name: "Hammer".to_string(),
+            damage: [1, 2, 4, 6, 8, 10, 12],
+            ranged: false,
+            two_handed: false,
+            armour_piercing: true,
+        }
+    }
 }
 
 /*
