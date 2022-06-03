@@ -169,6 +169,10 @@ impl Weapon {
         self.damage[(roll-1) as usize]
     }
 
+    fn damage_as(&mut self, weapon: Weapon) {
+        self.damage = weapon.damage;
+    }
+
     fn sword() -> Weapon {
         Weapon {
             name: "Sword".to_string(),
