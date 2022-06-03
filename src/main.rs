@@ -238,6 +238,16 @@ impl Weapon {
             armour_piercing: true,
         }
     }
+
+    fn spear() -> Weapon {
+        Weapon {
+            name: "Spear".to_string(),
+            damage: [4, 4, 6, 6, 8, 8, 10],
+            ranged: false,
+            two_handed: false,
+            armour_piercing: false,
+        }
+    }
 }
 
 /*
