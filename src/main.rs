@@ -154,6 +154,8 @@ struct Weapon {
     name: String,
     damage: [i16;7],
     ranged: bool,
+    two_handed: bool,
+    armour_piercing: bool,
 }
 
 impl Weapon {
@@ -179,6 +181,8 @@ impl Weapon {
             name: "Sword".to_string(),
             damage: [4, 6, 6, 6, 6, 8, 10],
             ranged: false,
+            two_handed: false,
+            armour_piercing: false,
         }
     }
 
@@ -187,6 +191,8 @@ impl Weapon {
             name: "Axe".to_string(),
             damage: [2, 2, 6, 6, 8, 10, 12],
             ranged: false,
+            two_handed: false,
+            armour_piercing: false,
         }
     }
 
@@ -195,6 +201,8 @@ impl Weapon {
             name: "Knife".to_string(),
             damage: [2, 2, 2, 2, 4, 8, 10],
             ranged: false,
+            two_handed: false,
+            armour_piercing: false,
         }
     }
 
@@ -203,6 +211,8 @@ impl Weapon {
             name: "Unarmed".to_string(),
             damage: [1, 1, 1, 2, 2, 3, 4],
             ranged: false,
+            two_handed: false,
+            armour_piercing: false,
         }
     }
 }
