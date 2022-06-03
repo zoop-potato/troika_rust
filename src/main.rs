@@ -215,6 +215,16 @@ impl Weapon {
             armour_piercing: false,
         }
     }
+
+    fn staff() -> Weapon {
+        Weapon {
+            name: "Staff".to_string(),
+            damage: [2, 4, 4, 4, 4, 6, 8],
+            ranged: false,
+            two_handed: false,
+            armour_piercing: false,
+        }
+    }
 }
 
 /*
